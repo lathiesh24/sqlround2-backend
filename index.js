@@ -1,17 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const port = 5000;
+const port = 8181;
 
 const cors = require('cors');
 app.use(cors());
 
 app.use(express.json());
 
-// Load environment variables from .env file
 require('dotenv').config();
 
-// Access the MONGO_URI environment variable
 const dbUrl = process.env.MONGO_URI;
 
 mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -28,9 +26,11 @@ app.get('/', (req, res) => {
 
 const teamRoutes = require('./routes/teamRoute');
 const scoreRoutes = require('./routes/scoreRoute');
+const queryRoutes = require('./routes/queryRoute'); 
 
 app.use('/api/teams', teamRoutes);
 app.use('/api/teams', scoreRoutes);
+app.use('/api/teams', queryRoutes)
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
