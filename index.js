@@ -10,7 +10,7 @@ app.use(express.json());
 
 require('dotenv').config();
 
-const dbUrl = process.env.MONGO_URI;
+const dbUrl = "mongodb+srv://lathiesh24:pass24@cluster0.ligdgmb.mongodb.net/;"
 
 mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
