@@ -4,7 +4,6 @@ const teamSchema = new mongoose.Schema({
     teamName: String,
     email: {
         type: String,
-        unique: true, 
     },
     phoneNumber: {
         type: String,
